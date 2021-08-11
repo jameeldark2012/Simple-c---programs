@@ -1,0 +1,121 @@
+#include <iostream.h>
+
+struct node
+{
+int data ;
+node *link ;
+};
+
+node *head , *cur ;
+
+
+
+void create ()
+{
+
+
+head = new node() ;
+cur=head;
+for (int i=1;i<=4;i++)
+    {
+     cur->link=new node() ;
+     cur =cur ->link;
+    }
+    cur->link =head;
+}
+
+void read ()
+{
+cout<<"please enter the numbers : " <<endl;
+cin>>head->data;
+cur=head->link;
+
+while (cur!=head)
+      {
+      cin>> cur->data;
+      cur=cur->link;
+      }
+}
+
+
+void write ()
+{
+cout<<endl;
+cout<<head->data << " ";
+cur=head->link;
+while (cur!=head)
+      {
+       cout<<cur->data<<" ";
+       cur=cur->link;
+      }
+}
+int size()
+{
+ int x=0;
+ cur=head;
+  do
+  {
+  x++;
+  cur=cur->link;
+  }
+while(cur!=head);
+
+return x;
+
+}
+void check(int x)
+ {
+  node *curtemp , *curtemp2;
+  int c=0;
+  cur=head;
+  do
+  {
+   if(x==cur->data)
+      {
+      c++;
+      curtemp=cur->link;
+      delete cur;
+      curtemp2->link=curtemp;
+      cur=curtemp;
+      }
+   curtemp2=cur;
+   cur=cur->link;
+  }
+  while(cur!=head);
+
+   if(c==0)
+   {
+
+    cur=head;
+     do
+     {
+      cur=cur->link;
+     }
+     while(cur->link!=head);
+     node *temp=new node();
+     temp->data=x;
+     temp->link=head;
+     head=temp;
+     cur->link=head;
+
+   }
+
+ }
+
+
+
+main()
+{
+create();
+read();
+write();
+cout<<endl<<endl<<"size is :"<<size();
+cout<<endl<<"Enter the number you want to search for in the list ... ";
+int x ; cin>>x;
+check (x);
+write();
+
+
+int q;
+cin>> q;
+}

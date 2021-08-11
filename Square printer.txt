@@ -1,0 +1,141 @@
+#include <iostream.h>
+int counteri=-1 , counterj=-1; static int k=0;
+int**  copy (int x[5][5], int **xtmp)
+{
+
+
+
+int xtmpi=0 , xtmpj=0;
+while (k<=8)
+     {
+      if (k%3==0)
+          {
+          counterj++;
+          counteri=0;                               // copies all squares into seperated arrays
+          }
+      for(int i=counteri;i<=counteri+2;i++)
+          {
+          for(int j=counterj;j<=counterj+2;j++)
+             {
+             xtmp[xtmpi][xtmpj]=x[i][j];
+             xtmpj++;
+
+             }
+           xtmpj=0;
+           xtmpi++;
+          }
+      counteri++;
+      k++;
+      return xtmp;
+
+
+      }
+
+}
+
+int** allo()
+{
+int **a = new int * [3] ;                // squares 2d array memory allocation
+for (int i=0;i<=2;i++)
+    a[i] = new int [3];
+return a;
+
+
+
+
+}
+void printx (int x[5][5])
+{
+for (int i=0;i<=4;i++)
+    {
+    for(int j=0;j<=4;j++)               //prints the main array
+        if(x[i][j]>=10)
+          cout <<x[i][j]<<" ";
+        else
+          cout <<x[i][j]<<"  ";
+
+
+    cout <<endl;
+    }
+
+}
+
+void print (int **x)
+{
+int i=0,j=0;
+for (int i=0;i<=2;i++)
+    {
+    for(int j=0;j<=2;j++)                    // prints the squares
+        if(x[i][j]>=10)
+          cout <<x[i][j]<<" ";
+        else
+          cout <<x[i][j]<<"  ";
+
+
+      cout<<endl;
+    }
+cout<<endl;
+
+}
+
+
+void search (int **x,int n)
+{
+for (int i=0;i<=2;i++)                     // searches for the number in the seperated arrays
+    for(int j=0;j<=2;j++)
+       if(n==x[i][j])
+         print (x);
+
+
+
+
+}
+
+
+
+
+
+
+
+main()
+{
+int num=1,n;
+int x[5][5];
+for (int i=0;i<=4;i++)
+    for(int j=0;j<=4;j++)
+       {
+       x[i][j]=num;
+       num++;
+       }
+
+int **x1=allo(),**x2=allo() , **x3=allo(),**x4=allo() , **x5=allo() ,**x6=allo() , **x7=allo() , **x8=allo() , **x9=allo();
+x1=copy (x,x1) ; x2=copy (x,x2) ; x3=copy (x,x3 ) ; x4 = copy (x,x4 ) ; x5 = copy (x,x5) ; x6 = copy (x,x6) ; x7=copy (x,x7 ) ; x8 = copy (x,x8) ; x9=copy (x,x9);
+int soso=1;
+//print (x1);print (x2);print (x3);print (x4);print (x5);print (x6);print (x7);print (x8);print (x9);
+while (soso==1)
+{
+cout <<"Enter the number you want to search for " <<endl;
+cin >>n;
+ search (x1,n) ;search (x2,n) ;search (x3,n) ;search (x4,n) ;search (x5,n) ;search (x6,n) ;search (x7,n) ;search (x8,n) ; search (x9,n) ;
+}
+
+
+
+int q;
+cin>>q;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+}

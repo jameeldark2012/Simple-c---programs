@@ -1,0 +1,66 @@
+#include <iostream.h>
+
+struct node
+{
+int data ;
+node *link ;
+};
+
+node *head , *cur ,  *last ;
+
+
+
+void create ()
+{
+
+
+head = new node() ;
+cur=head;
+for (int i=1;i<=4;i++)
+    {
+     cur->link=new node() ;
+     cur =cur ->link;
+    }
+    last = cur ;
+    last->link =head;
+}
+
+void read ()
+{
+
+cin>>head->data;
+cur=head->link;
+cout<<"please enter the numbers : " <<endl;
+while (cur!=head)
+      {
+      cin>> cur->data;
+      cur=cur->link;
+      }
+}
+
+
+void write ()
+{
+cout<<endl;
+cout<<head->data << " ";
+cur=head->link;
+while (cur!=head)
+      {
+       cout<<cur->data<<" ";
+       cur=cur->link;
+      }
+}
+
+
+
+
+main()
+{
+create();
+read();
+write();
+
+
+int q;
+cin>> q;
+}

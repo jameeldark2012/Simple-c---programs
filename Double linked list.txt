@@ -1,0 +1,103 @@
+#include <iostream.h>
+struct node
+{
+int data ;
+node *before , *after ;
+};
+typedef node *ptr;
+ptr head , last , cura, curb;
+
+void create_D()
+{
+head = new node ();
+head->before=NULL;
+cura=head;
+curb=head;
+for(int i=1;i<=4;i++)
+    {
+     cura->after=new node();
+     curb=cura;
+     cura=cura->after;
+     cura->before=curb;
+    }
+last = cura;
+last->after=NULL;
+}
+
+void dellast_D()
+{
+ last=last->before;
+ delete last->after;
+ last->after=NULL;
+}
+
+void print_D()
+{
+ cout<<head->data<< " ";
+ cura=head;
+ while(cura->after)
+      {
+
+
+       cura=cura->after;
+       cout<<cura->data << " ";
+      }
+cout<<endl;
+}
+
+void read_D()
+{
+ cin>>head->data;
+ cura=head;
+ while(cura->after)
+      {
+       cura=cura->after;
+       cin>>cura->data;
+      }
+cout<<endl;
+}
+
+void addany(int m)
+{
+  ptr temp=new node ();
+  temp->data=m;
+  cura=head;
+  curb=head;
+  while (cura->data<m)
+         {
+          curb=cura;
+          cura=cura->after;
+         }
+  cura->before=temp;
+  temp->after=cura;
+  temp->before=curb;
+  curb->after=temp;
+
+}
+void delfirst_D()
+{
+ head=head->after;
+ delete head->before;
+ head->before = NULL;
+
+
+}
+
+
+main()
+{
+create_D();
+read_D();
+print_D();
+//int x;
+//cout<<"enter the number you want to add " <<endl;
+//cin>>x;
+//addany(x);
+delfirst_D();
+dellast_D();
+print_D();
+
+
+int q; cin>>q;
+
+}

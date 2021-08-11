@@ -1,0 +1,148 @@
+#include <iostream.h>
+
+struct node
+{
+int data ;
+node *link ;
+};
+
+node *head , *cur ,  *last ;
+
+void create ()
+{
+
+
+head = new node ;
+cur=head;
+for (int i=1;i<=4;i++)
+    {
+     cur->link=new node ;
+     cur =cur ->link;
+    }
+    last = cur ;
+    last->link =NULL;
+}
+
+
+
+void read ()
+{
+
+cur=head;
+cout<<"please enter the numbers : " <<endl;
+while (cur)
+      {
+      cin>> cur->data;
+      cur=cur->link;
+      }
+}
+
+void write ()
+{
+cout<<endl;
+cur =head;
+while (cur)
+      {
+       cout<<cur->data<<" ";
+       cur=cur->link;
+      }
+}
+
+void addfirst (int m)
+{
+if (head==NULL)
+    {
+     head=new node ;
+     head->data = m;
+     last =  head ;
+     last ->link = NULL;
+     }
+else
+     {
+     node *temp = new node ;;
+     temp ->data =m;
+     temp ->link =head ;
+     head=temp;
+     }
+}
+void addend(int m)
+{
+ if (head ==NULL)
+  {
+   head=new node ;
+     head->data = m;
+     last =  head ;
+     last ->link = NULL;
+  }
+  else
+   {
+   node *temp =new node ;
+   temp-> data = m;
+   last-> link = temp;
+   last = temp;
+   last ->link=NULL;
+   }
+}
+
+void addany(int m)
+{
+node *temp , *ptr ;
+cur = head ;
+temp=new node ;
+temp->data =m;
+
+while (cur->data<m)
+      {
+       ptr=cur;
+       cur=cur->link;
+      }
+temp->link=cur;
+ptr->link=temp;
+
+
+
+}
+
+
+
+void addanyd(int m , int p )
+{
+node *ptr;
+node *temp= new node ;
+temp->data = 6;
+cur = head ;
+for (int i=1;i<p;i++)
+    {
+    ptr=cur ;
+    cur =cur ->link;
+    }
+temp->link = cur ;
+ptr->link = temp;
+}
+
+
+
+
+
+main()
+{
+
+
+create ();
+read();
+addanyd(7,6);
+write ();
+
+
+int q;
+cin >>q;
+
+
+
+
+
+
+}
+
+
+

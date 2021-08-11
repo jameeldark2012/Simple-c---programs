@@ -1,0 +1,145 @@
+#include <iostream.h>
+struct node
+{
+int data;
+node *link;
+};
+
+node *L,*Llast ,*p,*plast,*cur,*cur2;
+ void create (int d , int f )
+{
+
+   L = new node; cur = L ;
+   for (int i=2 ;i<=d ; i++)
+        {
+         cur ->link = new node ;
+         cur=cur ->link;
+        }
+    Llast = cur ;
+    Llast ->link =NULL;
+
+
+   p= new node; cur = p ;
+   for (int i=2 ;i<=f ; i++)
+        {
+         cur ->link = new node ;
+         cur=cur ->link;
+        }
+    plast = cur ;
+    plast ->link =NULL;
+
+
+}
+
+void read (int n)
+{
+  if(n==1)
+   {
+   cout<<"Please enter the  numbers "<<endl;
+   cur=L ;
+   while(cur)
+       {
+        cin>>cur->data;
+        cur=cur->link;
+       }
+   }
+else if(n==2)
+   {
+   cout<<"Please enter the position numbers "<<endl;
+
+    cur=p ;
+   while(cur)
+       {
+        cin>>cur->data;
+        cur=cur->link;
+       }
+
+   }
+
+}
+
+void write (int n)
+{
+   if(n==1)
+    {
+    cout<<"numbers are : ";
+
+   cout<<L->data<< " ";
+   cur=L;
+   while (cur->link)
+         {
+          cur=cur->link;
+          cout<<cur->data<< " ";
+         }
+   cout<<endl;
+     }
+else if(n==2)
+     {
+     cout<<"positions are : ";
+     cout<<p->data<< " ";
+     cur=p;
+     while (cur->link)
+         {
+          cur=cur->link;
+          cout<<cur->data<< " ";
+         }
+
+     }
+}
+
+void printlots()
+{
+    cur=L; cur2=p;
+    while(cur2)
+          {
+           if(cur2->data==1)
+              cout<<L->data<< " ";
+           else
+              {
+              cur=L;
+              for(int i=1;i<cur2->data;i++)
+                  {
+                  cur=cur->link;
+                  }
+              cout<<cur->data<< " ";
+              }
+           cur2=cur2->link;
+          }
+
+}
+
+
+main()
+{
+int d ,f;
+cout<<"Please enter the L list length : ";
+cin>>d;
+cout<<endl<< "Please enter the p list length : "<<endl;
+cin>>f;
+create (d,f);
+read(1);read(2);
+printlots();
+int q;
+cin>>q;
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

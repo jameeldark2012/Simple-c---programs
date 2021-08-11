@@ -1,0 +1,38 @@
+#include <iostream.h>
+struct node
+{
+int data ;
+node *link ;
+};
+
+node *head , *cur ,  *last ,*max;
+
+
+
+void cir()
+{
+max = new node ;
+head = new node;
+head ->data = 1;
+cur=head ;
+max->data = head ->data;
+for (int i=2;i<=4;i++)
+{
+cur->link=new node ;
+cur=cur->link;
+cur->data = i;
+if(max->data<cur->data)
+   max->data=cur->data;
+}
+last =cur; last ->link=head;
+cout <<" the max value is : " <<max ->data;
+}
+
+
+main()
+{
+cir();
+
+int q; cin >>q;
+}
+

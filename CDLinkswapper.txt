@@ -1,0 +1,149 @@
+#include <iostream.h>
+#include <iomanip.h>
+struct node
+{
+int data ;
+node *before , *after ;
+};
+typedef node *ptr;
+ptr head , last , cura, curb, ptr1;
+
+void create_CD()
+{
+ head=new node ();
+cin>> head->data;
+ cura=head;
+ curb=head;
+ for(int i=1;i<=4;i++)              //creates a CD linked list of 5 elements while accepting input from user ;
+     {
+      cura->after=new node();
+      curb=cura;
+      cura=cura->after;
+      cin>> cura->data;
+      cura->before=curb;
+     }
+ last = cura;
+ last->after=head;
+ head->before=last;
+
+}
+
+void sort_CD()
+{
+cura=head;
+curb=head->after;
+ ptr temp = new node ();
+ while (cura->after!=head)
+    {
+     while (curb!=head)
+            {
+             if(curb->data < cura->data)
+                {                                                    //sorts list's elements in an assending order ;
+                 temp->data = cura->data;
+                 cura->data=curb->data;
+                 curb->data=temp->data;
+                 curb=curb->after;
+                }
+             else
+                curb=curb->after;
+
+            }
+     cura=cura->after;
+     curb=cura->after;
+    }
+
+}
+
+int print_CD()
+{
+   if(head==NULL||last==NULL)
+      return 0;
+
+
+ else
+ {
+ cout<<head->data<< " ";
+ cura=head;
+ while (cura->after!=head)
+       {                                //prints the CD list ;
+        cura=cura->after;
+        cout<<cura->data << " ";
+       }
+  }
+cout<<endl;
+
+}
+
+delfirst_CD()
+{
+ if(head==last)
+{
+ delete head ;    //If the list has one element it assigns pointers to-> NULL manually
+ head=NULL;
+ last=NULL;
+}
+ else
+ {
+ head=head->after;
+ cura=head->before;
+ head->before=cura->before;
+ last->after=head;
+ delete cura ;
+ }
+
+}
+
+dellast_CD()
+{
+if(last==head)
+{
+ delete last ;    //If the list has one element it assigns pointers to-> NULL manually
+ last=NULL;
+ head=NULL;
+}
+ else
+  {
+ cura=last;
+ last=last->before;
+ last->after=cura->after;
+ head->before=cura->before;
+ delete cura;
+  }
+}
+
+void linkswapper_CD()
+{
+ cura=head;
+ curb=head;
+ cout<<"Enter the positions ... \n";
+ int x ,y ; cin>>x>>y;
+ for(int i=1;i<x;i++)
+    cura=cura->after;
+ for(int j =1 ;j <y;j++)
+    curb=curb->after;
+
+ ptr ptr=cura->after;
+ ptr1=cura->before;
+
+ ptr->after =cura;
+ ptr->before =curb;
+ cura->before=ptr;
+ ptr->after=cura;
+ cura->after=curb->after;
+ curb->before=ptr1;
+ curb->after=ptr;
+ ptr1->after=curb;
+}
+
+
+
+
+main()
+{
+ create_CD();
+ print_CD();
+ linkswapper_CD();
+ print_CD();
+ int q;
+ cin>>q;
+}

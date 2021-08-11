@@ -1,0 +1,133 @@
+#include <iostream.h>
+struct node
+{
+int data ;
+node *before , *after ;
+};
+typedef node *ptr;
+ptr head , last , cura, curb;
+
+void create_CD()
+{
+ head=new node ();
+cin>> head->data;
+ cura=head;
+ curb=head;
+ for(int i=1;i<=4;i++)              //creates a CD linked list while accepting input from user ;
+     {
+      cura->after=new node();
+      curb=cura;
+      cura=cura->after;
+      cin>> cura->data;
+      cura->before=curb;
+     }
+ last = cura;
+ last->after=head;
+ head->before=last;
+
+}
+
+void sort_CD()
+{
+cura=head;
+curb=head->after;
+ ptr temp = new node ();
+ while (cura->after!=head)
+    {
+     while (curb!=head)
+            {
+             if(curb->data < cura->data)
+                {                                                    //sorts list's elements in an assending order ;
+                 temp->data = cura->data;
+                 cura->data=curb->data;
+                 curb->data=temp->data;
+                 curb=curb->after;
+                }
+             else
+                curb=curb->after;
+
+            }
+     cura=cura->after;
+     curb=cura->after;
+    }
+
+}
+
+int print_CD()
+{
+
+ if(!head||!cura)
+    return 0;
+ cout<<head->data;
+ cura=head;
+ while (cura->after!=last)
+       {                                //prints the CD list ;
+        cura=cura->after;
+        cout<<cura->data << " ";
+       }
+
+
+
+}
+
+delfirst_CD()
+{
+ head=head->after;
+ cura=head->before;
+ head->before=cura->before;
+ last->after=head;
+ delete cura ;
+
+}
+
+dellast_CD()
+{
+ cura=last;
+ last=last->before;
+ last->after=cura->after;
+ head->before=cura->before;
+ delete cura;
+}
+
+del_odd_CD()
+{
+
+
+ cura=head->after;
+ curb=cura;
+ ptr ptr;
+ while(cura!=last)
+      {
+       if(cura->data%2!=0)
+          {
+           ptr=cura->before;
+           curb=cura->after;
+           ptr->after=curb;                         //checks data for any element if odd it deletes it
+           curb->before=ptr;
+           delete cura;
+           cura=curb;;
+          }
+       else
+          {
+           cura=cura->after;
+          }
+      }
+
+if(head->data%2!=0)
+          delfirst_CD();   //checks data for head if odd it deletes   it
+
+}
+main()
+{
+ create_CD();
+ sort_CD();
+ print_CD();
+ cout<<"\n";
+ del_odd_CD();
+ if(last->data%2!=0)  //cheks data for last if odd it deletes it
+     dellast_CD();
+ print_CD();
+ cout<<"\n";
+ int q;
+ cin>>q;
+}

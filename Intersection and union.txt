@@ -1,0 +1,168 @@
+#include <iostream.h>
+struct node
+   {
+    int data;
+    node* link;
+   };
+node *L1head , *L2head,*L1last,*L2last,*cur1,*cur2,*L3head ,*L3last,*cur3;
+ int s=0;
+
+
+void create ()
+{
+L1head = new node ;
+cur1=L1head ;
+for(int i=1;i<=1;i++)
+    {
+     cur1->link=new node ;
+     cur1=cur1->link;
+    }
+L1last=cur1;
+L1last->link=NULL;
+
+
+
+L2head = new node ;
+cur2=L2head ;
+for(int i=1;i<=1;i++)
+    {
+     cur2->link=new node ;
+     cur2=cur2->link;
+    }
+L2last=cur2;
+L2last->link=NULL;
+
+
+
+}
+
+
+
+void read ()
+{
+cout<<"enter the first list numbers " <<endl;
+cur1=L1head;
+while (cur1)
+       {
+        cin>>cur1->data;
+        cur1=cur1->link;
+       }
+cout<<"enter the second list numbers " <<endl;
+cur2=L2head;
+while (cur2)
+       {
+        cin>>cur2->data;
+        cur2=cur2->link;
+       }
+
+}
+void write()
+{
+cur1=L1head;
+while(cur1)
+     {
+      cout<<cur1->data<<" " ;
+      cur1=cur1->link;
+     }
+cout<<endl;
+
+cur2=L2head;
+while(cur2)
+     {
+      cout<<cur2->data<<" " ;
+      cur2=cur2->link;
+     }
+cout<<endl;
+
+cur3=L3head;
+while(cur3)
+     {
+      cout<<cur3->data<<" " ;
+      cur3=cur3->link;
+     }
+cout<<endl;
+
+}
+void cross()
+{
+cur1=L1head ; cur2=L2head;
+cout<<"L1 intersection L2 is : " <<endl;
+while(cur1)
+    {
+     while(cur2)
+          {
+           if(cur2->data==cur1->data)
+              {
+               cout<<cur1->data<< " ";
+               cur2=cur2->link;
+               s++;
+              }
+
+           else
+               cur2=cur2->link;
+          }
+     cur1=cur1->link;
+     cur2=L2head;
+    }
+L3head = new node ;
+cur3=L3head ;
+for(int i=1;i<=4-s;i++)
+    {
+     cur3->link=new node ;
+     cur3=cur3->link;
+    }
+L3last=cur3;
+L3last->link=NULL;
+
+
+}
+
+/*void uni()
+   {
+
+    cur1=L1head; cur2=L3head; cur3=L3head; L1last->link = L2head;
+    while(cur1)
+    {
+        while(cur2)
+             {
+              while(cur3)
+                   {
+                    if(cur3->data==cur1->data)
+                       goto br;
+                    else
+                       cur3=cur3->link;
+                   }
+
+               cur2->data=cur1->data;
+               cur2=cur2->link;
+               br:cur3=L3head ; cur1=cur1->link;
+             }
+
+     }
+cout<<endl;
+cout << "The L1 U L2 is = "<<endl;
+cur3=L3head;
+while(cur3)
+     {
+      cout<<cur3->data<<" " ;
+      cur3=cur3->link;
+     }
+cout<<endl;
+
+    } */
+
+
+main()
+{
+create();
+read();
+cross();
+//uni();
+write();
+
+
+
+
+int q;
+cin>>q;
+}

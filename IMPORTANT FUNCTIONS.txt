@@ -1,0 +1,19 @@
+#include <windows.h>
+
+main()
+{
+
+
+Sleep(mileseconds);
+
+
+}
+
+
+#include <conio.h>
+
+main()
+{
+
+clrscr();
+}
